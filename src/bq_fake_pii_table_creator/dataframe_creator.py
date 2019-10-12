@@ -4,10 +4,14 @@ from datetime import timedelta, datetime
 import pandas as pd
 from faker import Faker
 from faker.providers import address
+from faker.providers import automotive
+from faker.providers import bank
+from faker.providers import barcode
 from faker.providers import company
 from faker.providers import credit_card
 from faker.providers import date_time
 from faker.providers import internet
+from faker.providers import geo
 from faker.providers import job
 from faker.providers import person
 from faker.providers import ssn
@@ -35,7 +39,7 @@ class DFCreator:
         return {'gender': g, 'first_name': n}
 
     def birth_and_start_date(self):
-        sd = self.__fake.date_between(start_date="-20y", end_date="now")
+        sd = self.__fake.date_between(start_date='-20y', end_date='now')
         delta = timedelta(days=365 * random.randint(18, 40))
         bd = sd - delta
 
@@ -146,6 +150,10 @@ class DFCreator:
     @classmethod
     def __init_faker(cls):
         fake = Faker()
+        fake.add_provider(automotive)
+        fake.add_provider(bank)
+        fake.add_provider(barcode)
+        fake.add_provider(geo)
         fake.add_provider(person)
         fake.add_provider(internet)
         fake.add_provider(ssn)
@@ -161,6 +169,28 @@ class DFCreator:
         data_functions['first_name_and_gender'] = self.first_name_and_gender
         data_functions['last_name'] = lambda: {'last_name': self.__fake.last_name()}
         data_functions['personal_email'] = lambda: {'email': self.__fake.email()}
+        data_functions['company_email'] = lambda: {'company_email': self.__fake.company_email()}
+
+        # > Internet
+        data_functions['user_name'] = lambda: {'user_name': self.__fake.user_name()}
+        data_functions['hostname'] = lambda: {'hostname': self.__fake.hostname()}
+        data_functions['ipv4_private'] = lambda: {'ipv4_private': self.__fake.ipv4_private()}
+        data_functions['ipv6'] = lambda: {'ipv6': self.__fake.ipv6()}
+        data_functions['uri'] = lambda: {'uri': self.__fake.uri()}
+        data_functions['image_url'] = lambda: {'image_url': self.__fake.image_url()}
+        data_functions['mac_address'] = lambda: {'mac_address': self.__fake.mac_address()}
+        # Internet <
+
+        data_functions['bban'] = lambda: {'bban': self.__fake.bban()}
+        data_functions['iban'] = lambda: {'iban': self.__fake.iban()}
+
+        data_functions['barcode'] = lambda: {'barcode': self.__fake.ean()}
+
+        data_functions['coordinate'] = lambda: {'coordinate': self.__fake.coordinate()}
+        data_functions['latitude'] = lambda: {'latitude': self.__fake.latitude()}
+        data_functions['longitude'] = lambda: {'longitude': self.__fake.longitude()}
+
+        data_functions['license_plate'] = lambda: {'license_plate': self.__fake.license_plate()}
         data_functions['ssn'] = lambda: {'ssn': self.__fake.ssn()}
         data_functions['birth_and_start_date'] = self.birth_and_start_date
         data_functions['title_office_org_salary_bonus'] = self.title_office_org_salary_bonus

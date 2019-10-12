@@ -27,7 +27,7 @@ class BQFakeTableCreatorCLI:
                             help='If left blank a random name will be generated')
         parser.add_argument('--bq-table-name', help='If left blank a random name will be generated')
         parser.add_argument('--num-rows',
-                            help='If left blank a random number of rows will be generated')
+                            help='If left blank a random number of rows will be generated (25 avaliable)')
         parser.add_argument('--num-cols',
                             help='If left blank a random number of columns will be generated')
         parser.add_argument('--obfuscate-col-names',
