@@ -13,7 +13,7 @@ class BQFakeTableCreatorCLI:
 
     @classmethod
     def __setup_logging(cls):
-        logging.basicConfig(level=logging.DEBUG)
+        logging.basicConfig(level=logging.INFO)
 
     @classmethod
     def __parse_args(cls):
@@ -33,13 +33,13 @@ class BQFakeTableCreatorCLI:
         parser.add_argument('--obfuscate-col-names',
                             help='If provided the column names will be obfuscated')
 
-        parser.set_defaults(func=cls.__create_fake_take)
+        parser.set_defaults(func=cls.__create_fake_table)
 
         args = parser.parse_args()
         args.func(args)
 
     @classmethod
-    def __create_fake_take(cls, args):
+    def __create_fake_table(cls, args):
         BQFakeTableCreator(args.project_id,
                            args.bq_dataset_name,
                            args.bq_table_name,
