@@ -1,3 +1,5 @@
+import os
+
 from .bq_creator import BigQueryClientHelper
 from .csv_creator import CSVCreator
 from .dataframe_creator import DFCreator
@@ -39,3 +41,5 @@ class BQFakeTableCreator:
         bigquery_helper.create_dataset(dataset_id)
         bigquery_helper.load_from_gcs(gcs_path, df_name, dataset_id)
         storage_helper.delete_bucket(temp_bucket_name)
+        # Cleans up generated file.
+        os.remove(csv_path)

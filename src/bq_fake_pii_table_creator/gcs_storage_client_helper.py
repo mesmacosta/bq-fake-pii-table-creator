@@ -30,8 +30,8 @@ class StorageClientHelper:
             bucket = self.__storage_cloud_client.create_bucket(bucket)
             logging.info('Bucket created...')
             return bucket
-        except:
-            logging.info('Bucket already exists...')
+        except Exception as err:
+            logging.exception('Error creating bucket:')
 
     def list_buckets(self):
         logging.info('--> Listing Project Storage Bucket...')

@@ -46,3 +46,6 @@ class BQFakeTableCreatorCLI:
                            int(args.num_rows) if args.num_rows else None,
                            int(args.num_cols) if args.num_cols else None,
                            args.obfuscate_col_names).create()
+
+def main():
+    BQFakeTableCreatorCLI.run()

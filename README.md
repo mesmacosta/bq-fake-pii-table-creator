@@ -5,6 +5,7 @@ Library for creating BQ tables with fake pii data.
 The drive and use case to create this library, was when you need a lot of data to validate if your org complies with regulations like
 CCPA, HIPAA, GDPR.
 
+[![PyPi][4]][5] [![License][6]][6] [![Issues][7]][8]
 
 ## 1. Environment setup
 
@@ -80,3 +81,9 @@ docker run --rm --tty -v CREDENTIALS_FILES_FOLDER:/data \
 bq_fake_pii_table_creator \
  --project-id your_project
 ```
+
+[4]: https://img.shields.io/pypi/v/bq-fake-pii-table-creator.svg
+[5]: https://pypi.org/project/bq-fake-pii-table-creator/
+[6]: https://img.shields.io/github/license/mesmacosta/bq-fake-pii-table-creator.svg
+[7]: https://img.shields.io/github/issues/mesmacosta/bq-fake-pii-table-creator.svg
+[8]: https://github.com/mesmacosta/bq-fake-pii-table-creator/issues
