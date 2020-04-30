@@ -7,6 +7,12 @@ CCPA, HIPAA, GDPR.
 
 [![PyPi][4]][5] [![License][6]][6] [![Issues][7]][8]
 
+Usage from PyPi:
+````bash
+pip install bq-fake-pii-table-creator
+bq-fake-pii-table-creator --help
+````
+
 ## 1. Environment setup
 
 ### 1.1. Get the code
